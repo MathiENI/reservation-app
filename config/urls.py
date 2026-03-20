@@ -22,7 +22,7 @@ from reservations.views import my_reservations
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', include('catalog.urls')),
+    path('', include('dashboard.urls')),
     path('reservations/', include('reservations.urls')),
     path('mine/', my_reservations, name='my_reservations'),
 ]
