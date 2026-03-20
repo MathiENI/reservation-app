@@ -23,14 +23,15 @@ class Reservation(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def clean(self):
-        #Validation des dates
+        if not self.start_datetime or not self.end_datetime:
+            raise ValidationError("Les dates sont obligatoires.")
+
         if self.start_datetime >= self.end_datetime:
-            raise ValidationError("La date de fin doit être après la date de début.")
+            raise ValidationError("La date de fin doit être après le début.")
 
         if self.start_datetime < timezone.now():
             raise ValidationError("Impossible de réserver dans le passé.")
 
-        #Vérification des conflits
         conflicts = Reservation.objects.filter(
             resource=self.resource,
             start_datetime__lt=self.end_datetime,

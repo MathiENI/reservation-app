@@ -9,7 +9,7 @@ def create_reservation(request, resource_id):
     resource = get_object_or_404(Resource, id=resource_id)
 
     if request.method == 'POST':
-        form = ReservationForm(request.POST)
+        form = ReservationForm(request.POST, resource=resource, user=request.user)
 
         if form.is_valid():
             reservation = form.save(commit=False)
@@ -17,14 +17,13 @@ def create_reservation(request, resource_id):
             reservation.resource = resource
 
             try:
-                reservation.full_clean()  # 🔥 déclenche tes règles métier
                 reservation.save()
                 return redirect('my_reservations')
             except Exception as e:
                 form.add_error(None, e)
 
     else:
-        form = ReservationForm()
+        form = ReservationForm(resource=resource, user=request.user)
 
     return render(request, 'reservations/create_reservation.html', {
         'form': form,
