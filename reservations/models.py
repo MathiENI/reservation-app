@@ -29,18 +29,9 @@ class Reservation(models.Model):
         if self.start_datetime >= self.end_datetime:
             raise ValidationError("La date de fin doit être après le début.")
 
+        from django.utils import timezone
         if self.start_datetime < timezone.now():
-            raise ValidationError("Impossible de réserver dans le passé.")
-
-        conflicts = Reservation.objects.filter(
-            resource=self.resource,
-            start_datetime__lt=self.end_datetime,
-            end_datetime__gt=self.start_datetime,
-            status="confirmed"
-        ).exclude(id=self.id)
-
-        if conflicts.exists():
-            raise ValidationError("Ce créneau est déjà réservé.")
+            raise ValidationError("Pas de réservation dans le passé.")
 
     def __str__(self):
         return f"{self.resource} - {self.start_datetime}"
