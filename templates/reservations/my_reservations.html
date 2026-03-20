@@ -1,0 +1,13 @@
+<h1>Mes réservations</h1>
+
+<ul>
+    {% for reservation in reservations %}
+        <li>
+            {{ reservation.resource.name }} |
+            {{ reservation.start_datetime }} → {{ reservation.end_datetime }} |
+            {{ reservation.status }}
+        </li>
+    {% empty %}
+        <li>Aucune réservation</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,18 @@
+<h1>Catalogue des ressources</h1>
+
+<form method="get">
+    <input type="text" name="search" placeholder="Rechercher...">
+    <button type="submit">🔍</button>
+</form>
+
+<ul>
+    {% for resource in resources %}
+        <li>
+            <a href="{% url 'resource_detail' resource.id %}">
+                {{ resource.name }} ({{ resource.get_type_display }})
+            </a>
+        </li>
+    {% empty %}
+        <li>Aucune ressource trouvée</li>
+    {% endfor %}
+</ul>
