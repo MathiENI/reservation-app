@@ -3,12 +3,12 @@
 {% block content %}
 <h1>Mes réservations</h1>
 
-<ul>
+<ul class="card-section">
     {% for reservation in reservations %}
-        <li>
-            {{ reservation.resource.name }} |
-            {{ reservation.start_datetime }} → {{ reservation.end_datetime }} |
-            {{ reservation.status }}
+        <li class="card">
+            <p>{{ reservation.resource.name }} |</p>
+            <p>{{ reservation.start_datetime }} → {{ reservation.end_datetime }} |</p>
+            <p>{{ reservation.status }}</p>
 
             {% if reservation.status == "confirmed" %}
                 <a href="{% url 'update_reservation' reservation.id %}">✏️ Modifier</a>

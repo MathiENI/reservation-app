@@ -2,56 +2,47 @@
 
 {% block content %}
 
-<h1>Catalogue</h1>
+<h1>Catalogue des ressources</h1>
 
-<form method="get">
+<ul class="card-section">
+    <form method="get" class="resources-filter">
+        <input class="filter-input" type="text" name="search" placeholder="Rechercher..."><br><br>
 
-    <input type="text" name="search" placeholder="Rechercher...">
+        <div class="filter-item">
+            <label for="type" id="type">Type :</label>
+            <select name="type">
+                <option value="">-- Tous --</option>
+                <option value="room">Salle</option>
+                <option value="equipment">Équipement</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label for="category" id="category">Catégorie :</label>
+            <select name="category">
+                <option value="">-- Toutes --</option>
+                {% for c in categories %}
+                    <option value="{{ c.id }}">{{ c.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-item">
+            <label for="lieu" id="lieu">Lieu :</label>
+            <select name="location">
+                <option value="">-- Tous --</option>
+                {% for l in locations %}
+                    <option value="{{ l.id }}">{{ l.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-item">
+            <label for="dispo" id="dispo">Disponible maintenant :</label>
+            <input type="checkbox" name="available">
+        </div>
+        <button type="submit">Filtrer</button>
+    </form>
 
-    <br><br>
-
-    Type :
-    <select name="type">
-        <option value="">-- Tous --</option>
-        <option value="room">Salle</option>
-        <option value="equipment">Équipement</option>
-    </select>
-
-    <br><br>
-
-    Catégorie :
-    <select name="category">
-        <option value="">-- Toutes --</option>
-        {% for c in categories %}
-            <option value="{{ c.id }}">{{ c.name }}</option>
-        {% endfor %}
-    </select>
-
-    <br><br>
-
-    Lieu :
-    <select name="location">
-        <option value="">-- Tous --</option>
-        {% for l in locations %}
-            <option value="{{ l.id }}">{{ l.name }}</option>
-        {% endfor %}
-    </select>
-
-    <br><br>
-
-    Disponible maintenant :
-    <input type="checkbox" name="available">
-
-    <br><br>
-
-    <button type="submit">Filtrer</button>
-</form>
-
-<hr>
-
-<ul>
     {% for resource in resources %}
-        <li>
+        <li class="card">
             <a href="{% url 'resource_detail' resource.id %}">
                 {{ resource.name }} ({{ resource.get_type_display }})
             </a>

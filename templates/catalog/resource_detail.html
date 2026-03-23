@@ -2,16 +2,20 @@
 
 {% block content %}
 
-<h1>Dashboard 👋 {{ user.username }}</h1>
 <h1>{{ resource.name }}</h1>
 
-<p>{{ resource.description }}</p>
-<p>Type : {{ resource.get_type_display }}</p>
-<p>Lieu : {{ resource.location }}</p>
-<a href="{% url 'create_reservation' resource.id %}">
-    Réserver cette ressource
-</a>
-<a href="/resources/">Retour</a>
+<ul class="card-section">
+    <li class="card">
+        <p>{{ resource.description }}</p>
+        <p>Type : {{ resource.get_type_display }}</p>
+        <p>Lieu : {{ resource.location }}</p>
+        <a href="{% url 'create_reservation' resource.id %}">
+            Réserver cette ressource
+        </a>
+        <a href="/resources/">Retour</a>
+    </li>
+</ul>
+
 
 {% endblock %}
 

@@ -2,43 +2,30 @@
 
 {% block content %}
 
-<h1>Dashboard 👋 {{ user.username }}</h1>
-
-{% if alerts %}
-    <h2> Réservations proches</h2>
-    <ul>
-        {% for r in alerts %}
-            <li>
-                {{ r.resource.name }} à {{ r.start_datetime }}
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-<hr>
+<h1>Dashboard</h1>
 
 <h2>📅 Mes prochaines réservations</h2>
 
-<ul>
+<ul class="card-section">
     {% for r in reservations %}
-        <li>
-            {{ r.resource.name }} |
-            {{ r.start_datetime }} → {{ r.end_datetime }}
+        <li class="card">
+            <p>{{ r.resource.name }} |</p>
+            <p>{{ r.start_datetime }} → {{ r.end_datetime }}</p>
         </li>
     {% empty %}
         <li>Aucune réservation à venir</li>
     {% endfor %}
 </ul>
 
-<hr>
-
-<a href="/resources/">📦 Voir le catalogue</a>
-<br>
-<a href="/reservations/mine/">📋 Mes réservations</a>
-<br>
-<form method="post" action="{% url 'logout' %}" style="display:inline;">
-    {% csrf_token %}
-    <button type="submit">🚪 Déconnexion</button>
-</form>
+{% if alerts %}
+    <h2> Réservations proches</h2>
+    <ul class="card-section">
+        {% for r in alerts %}
+            <li class="card">
+                {{ r.resource.name }} à {{ r.start_datetime }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 {% endblock %}

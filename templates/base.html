@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
+{% load static %}
 <head>
     <title>Reservation App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
 
     <!-- NAVBAR -->
     <nav>
-        <a href="/">Dashboard</a> |
-        <a href="/resources/">Catalogue</a> |
-        <a href="/reservations/mine/">Mes réservations</a> |
+         👋 Hello {{ user.username }}
+        <a href="/">01. Dashboard</a> |
+        <a href="/resources/">02. Catalogue</a> |
+        <a href="/reservations/mine/">03. Mes réservations</a> |
+        <a href="/admin-panel/resources/">04. Admin</a> |
         <form method="post" action="{% url 'logout' %}" style="display:inline;">
             {% csrf_token %}
-            <button type="submit">Déconnexion</button>
+            <button type="submit" class="btn-text">Déconnexion</button>
         </form>
     </nav>
-
-    <hr>
 
     <!-- MESSAGES -->
     {% if messages %}
@@ -34,8 +37,9 @@
         {% endif %}
     {% endif %}
 
-    {% block content %}
-    {% endblock %}
-
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
 </html>

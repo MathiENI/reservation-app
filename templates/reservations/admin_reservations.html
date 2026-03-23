@@ -19,19 +19,19 @@
 
     <button type="submit">Filtrer</button>
     <a href="{% url 'cancel_reservation_admin' r.id %}">Annuler avec motif</a>
-    <li>
-    {{ r.resource.name }} |
-    créé par {{ r.created_by }} |
-    modifié par {{ r.updated_by }} |
-    le {{ r.updated_at }}
+    <li class="card">
+        {{ r.resource.name }} |
+        créé par {{ r.created_by }} |
+        modifié par {{ r.updated_by }} |
+        le {{ r.updated_at }}
     </li>
 </form>
 
 <hr>
 
-<ul>
+<ul class="card-section">
     {% for r in reservations %}
-        <li>
+        <li class="card">
             {{ r.user.username }} |
             {{ r.resource.name }} |
             {{ r.start_datetime }} |
