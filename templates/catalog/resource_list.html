@@ -2,17 +2,15 @@
 
 {% block content %}
 
-<h1>Dashboard 👋 {{ user.username }}</h1>
-
 <h1>Catalogue</h1>
 
 <form method="get">
 
-    🔍 <input type="text" name="search" placeholder="Rechercher...">
+    <input type="text" name="search" placeholder="Rechercher...">
 
     <br><br>
 
-    🎯 Type :
+    Type :
     <select name="type">
         <option value="">-- Tous --</option>
         <option value="room">Salle</option>
@@ -21,7 +19,7 @@
 
     <br><br>
 
-    🏷️ Catégorie :
+    Catégorie :
     <select name="category">
         <option value="">-- Toutes --</option>
         {% for c in categories %}
@@ -31,7 +29,7 @@
 
     <br><br>
 
-    📍 Lieu :
+    Lieu :
     <select name="location">
         <option value="">-- Tous --</option>
         {% for l in locations %}
@@ -41,7 +39,7 @@
 
     <br><br>
 
-    🔥 Disponible maintenant :
+    Disponible maintenant :
     <input type="checkbox" name="available">
 
     <br><br>

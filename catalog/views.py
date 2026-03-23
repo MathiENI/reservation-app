@@ -79,6 +79,11 @@ def create_resource(request):
         form = ResourceForm(request.POST)
 
         if form.is_valid():
+            resource = form.save(commit=False)
+
+            resource.created_by = request.user
+            resource.updated_by = request.user
+
             form.save()
             messages.success(request, "Ressource créée 🎉")
             return redirect('admin_resources')
@@ -100,6 +105,10 @@ def update_resource(request, resource_id):
         form = ResourceForm(request.POST, instance=resource)
 
         if form.is_valid():
+            resource = form.save(commit=False)
+
+            resource.updated_by = request.user
+
             form.save()
             messages.success(request, "Ressource modifiée ✏️")
             return redirect('admin_resources')
@@ -130,6 +139,10 @@ def create_category(request):
         form = CategoryForm(request.POST)
 
         if form.is_valid():
+            resource = form.save(commit=False)
+
+            resource.updated_by = request.user
+
             form.save()
             messages.success(request, "Catégorie créée 🎉")
             return redirect('admin_categories')
@@ -151,6 +164,9 @@ def update_category(request, category_id):
         form = CategoryForm(request.POST, instance=category)
 
         if form.is_valid():
+            category = form.save(commit=False)
+
+            category.updated_by = request.user
             form.save()
             messages.success(request, "Catégorie modifiée ✏️")
             return redirect('admin_categories')

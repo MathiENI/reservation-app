@@ -4,7 +4,8 @@ from catalog.models import Resource
 from .models import Reservation
 from .forms import ReservationForm
 from django.contrib.auth.decorators import user_passes_test
-from django.contrib import messages
+import csv
+from django.http import HttpResponse
 
 @user_passes_test(lambda u: u.is_staff)
 def admin_reservations(request):
@@ -71,6 +72,10 @@ def create_reservation(request, resource_id):
             reservation = form.save(commit=False)
             reservation.user = request.user
             reservation.resource = resource
+            # 🔥 JOURNALISATION
+            reservation.created_by = request.user
+            reservation.updated_by = request.user
+
             reservation.save()
             messages.success(request, "Réservation créée avec succès 🎉")
             return redirect('my_reservations')
@@ -109,6 +114,9 @@ def update_reservation(request, reservation_id):
         form = ReservationForm(request.POST, instance=reservation, resource=reservation.resource)
 
         if form.is_valid():
+            # 🔥 JOURNALISATION
+            reservation.updated_by = request.user
+
             form.save()
             messages.success(request, "Réservation modifiée avec succès.")
             return redirect('my_reservations')
@@ -133,3 +141,46 @@ def cancel_reservation_user(request, reservation_id):
 
     messages.success(request, "Réservation annulée.")
     return redirect('my_reservations')
+
+@user_passes_test(lambda u: u.is_staff)
+def export_reservations_csv(request):
+    reservations = Reservation.objects.all()
+
+    # 📅 filtres période
+    start = request.GET.get('start')
+    end = request.GET.get('end')
+
+    if start:
+        reservations = reservations.filter(start_datetime__gte=start)
+
+    if end:
+        reservations = reservations.filter(end_datetime__lte=end)
+
+    # 📄 réponse CSV
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="reservations.csv"'
+
+    writer = csv.writer(response)
+
+    # 🧾 header
+    writer.writerow([
+        'Utilisateur',
+        'Ressource',
+        'Début',
+        'Fin',
+        'Statut',
+        'Créé le',
+    ])
+
+    # 📊 données
+    for r in reservations:
+        writer.writerow([
+            r.user.username,
+            r.resource.name,
+            r.start_datetime,
+            r.end_datetime,
+            r.status,
+            r.created_at,
+        ])
+
+    return response

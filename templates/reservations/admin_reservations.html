@@ -5,22 +5,26 @@
 
 <form method="get">
 
-    👤 Utilisateur :
+    Utilisateur :
     <input type="text" name="user">
 
-    📦 Ressource :
+    Ressource :
     <input type="text" name="resource">
 
-    📅 Début :
+    Début :
     <input type="date" name="start">
 
-    📅 Fin :
+    Fin :
     <input type="date" name="end">
 
     <button type="submit">Filtrer</button>
-    <a href="{% url 'cancel_reservation_admin' r.id %}">
-    ❌ Annuler avec motif
-</a>
+    <a href="{% url 'cancel_reservation_admin' r.id %}">Annuler avec motif</a>
+    <li>
+    {{ r.resource.name }} |
+    créé par {{ r.created_by }} |
+    modifié par {{ r.updated_by }} |
+    le {{ r.updated_at }}
+    </li>
 </form>
 
 <hr>
@@ -35,6 +39,19 @@
         </li>
     {% endfor %}
 </ul>
+
+<h2>Export CSV</h2>
+
+<form method="get" action="{% url 'export_reservations_csv' %}">
+
+    📅 Début :
+    <input type="date" name="start">
+
+    📅 Fin :
+    <input type="date" name="end">
+
+    <button type="submit">Télécharger CSV</button>
+</form>
 
 {% endblock %}
 

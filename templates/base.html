@@ -5,20 +5,20 @@
 </head>
 <body>
 
-    <!-- 🔥 NAVBAR -->
+    <!-- NAVBAR -->
     <nav>
         <a href="/">Dashboard</a> |
         <a href="/resources/">Catalogue</a> |
         <a href="/reservations/mine/">Mes réservations</a> |
         <form method="post" action="{% url 'logout' %}" style="display:inline;">
             {% csrf_token %}
-            <button type="submit">🚪 Déconnexion</button>
+            <button type="submit">Déconnexion</button>
         </form>
     </nav>
 
     <hr>
 
-    <!-- 💬 MESSAGES -->
+    <!-- MESSAGES -->
     {% if messages %}
         {% for message in messages %}
             <p style="color: green;">

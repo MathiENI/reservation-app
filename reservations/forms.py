@@ -23,7 +23,7 @@ class ReservationForm(forms.ModelForm):
         if start < timezone.now():
             raise forms.ValidationError("Pas de réservation dans le passé.")
 
-        # 🔥 CONFLIT ICI
+        # GESTION DES CONFLITS
         from .models import Reservation
 
         conflicts = Reservation.objects.filter(
