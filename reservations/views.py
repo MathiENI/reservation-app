@@ -9,11 +9,28 @@ from django.contrib import messages
 @user_passes_test(lambda u: u.is_staff)
 def admin_reservations(request):
     reservations = Reservation.objects.all().order_by('-start_datetime')
-    user_filter = request.GET.get('user')
-    if user_filter:
-        reservations = reservations.filter(user__username__icontains=user_filter)
 
-    return render(request, 'reservations/admin_reservations.html',  {
+    # 👤 filtre utilisateur
+    user = request.GET.get('user')
+    if user:
+        reservations = reservations.filter(user__username__icontains=user)
+
+    # 📦 filtre ressource
+    resource = request.GET.get('resource')
+    if resource:
+        reservations = reservations.filter(resource__name__icontains=resource)
+
+    # 📅 filtre date début
+    start = request.GET.get('start')
+    if start:
+        reservations = reservations.filter(start_datetime__gte=start)
+
+    # 📅 filtre date fin
+    end = request.GET.get('end')
+    if end:
+        reservations = reservations.filter(end_datetime__lte=end)
+
+    return render(request, 'reservations/admin_reservations.html', {
         'reservations': reservations
     })
 
@@ -24,6 +41,24 @@ def cancel_reservation(request, reservation_id):
     reservation.save()
 
     return redirect('admin_reservations')
+
+@user_passes_test(lambda u: u.is_staff)
+def cancel_reservation_admin(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+
+    if request.method == 'POST':
+        reason = request.POST.get('reason')
+
+        reservation.status = "cancelled"
+        reservation.reason = reason
+        reservation.save()
+
+        messages.success(request, "Réservation annulée avec motif 🧾")
+        return redirect('admin_reservations')
+
+    return render(request, 'reservations/cancel_with_reason.html', {
+        'reservation': reservation
+    })
 
 @login_required
 def create_reservation(request, resource_id):

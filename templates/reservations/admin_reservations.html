@@ -1,19 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Admin - Réservations</h1>
 
-<h1>Dashboard 👋 {{ user.username }}</h1>
+<form method="get">
+
+    👤 Utilisateur :
+    <input type="text" name="user">
+
+    📦 Ressource :
+    <input type="text" name="resource">
+
+    📅 Début :
+    <input type="date" name="start">
+
+    📅 Fin :
+    <input type="date" name="end">
+
+    <button type="submit">Filtrer</button>
+    <a href="{% url 'cancel_reservation_admin' r.id %}">
+    ❌ Annuler avec motif
+</a>
+</form>
+
+<hr>
+
 <ul>
     {% for r in reservations %}
         <li>
             {{ r.user.username }} |
             {{ r.resource.name }} |
-            {{ r.start_datetime }} → {{ r.end_datetime }} |
+            {{ r.start_datetime }} |
             {{ r.status }}
-
-            {% if r.status == "confirmed" %}
-                <a href="{% url 'cancel_reservation' r.id %}">❌ Annuler</a>
-            {% endif %}
         </li>
     {% endfor %}
 </ul>

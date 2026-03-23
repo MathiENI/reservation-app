@@ -22,6 +22,8 @@ class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    reason = models.TextField(blank=True, null=True)
+
     def clean(self):
         if not self.start_datetime or not self.end_datetime:
             raise ValidationError("Les dates sont obligatoires.")

@@ -1,0 +1,11 @@
+<h1>Annuler réservation</h1>
+
+<p>{{ reservation.resource.name }}</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <textarea name="reason" placeholder="Motif..."></textarea>
+
+    <button type="submit">Confirmer</button>
+</form>

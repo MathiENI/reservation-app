@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import create_reservation, my_reservations, admin_reservations, cancel_reservation, update_reservation, cancel_reservation_user
+from .views import create_reservation, my_reservations, admin_reservations, cancel_reservation, update_reservation, \
+    cancel_reservation_user, cancel_reservation_admin
 
 urlpatterns = [
     path('create/<int:resource_id>/', create_reservation, name='create_reservation'),
@@ -8,4 +9,5 @@ urlpatterns = [
     path('cancel/<int:reservation_id>/', cancel_reservation, name='cancel_reservation'),
     path('update/<int:reservation_id>/', update_reservation, name='update_reservation'),
     path('cancel/<int:reservation_id>/', cancel_reservation_user, name='cancel_reservation_user'),
+    path('admin/cancel/<int:reservation_id>/', cancel_reservation_admin, name='cancel_reservation_admin'),
 ]
