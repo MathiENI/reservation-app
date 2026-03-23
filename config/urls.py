@@ -24,5 +24,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('dashboard.urls')),
     path('reservations/', include('reservations.urls')),
-    path('mine/', my_reservations, name='my_reservations'),
+    path('', include('catalog.urls')),
+
 ]

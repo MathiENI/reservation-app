@@ -6,8 +6,11 @@
             {{ reservation.resource.name }} |
             {{ reservation.start_datetime }} → {{ reservation.end_datetime }} |
             {{ reservation.status }}
+
+            {% if reservation.status == "confirmed" %}
+                <a href="{% url 'update_reservation' reservation.id %}">✏️ Modifier</a>
+                <a href="{% url 'cancel_reservation_user' reservation.id %}">❌ Annuler</a>
+            {% endif %}
         </li>
-    {% empty %}
-        <li>Aucune réservation</li>
     {% endfor %}
 </ul>

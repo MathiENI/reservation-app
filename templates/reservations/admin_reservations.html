@@ -1,0 +1,14 @@
+<ul>
+    {% for r in reservations %}
+        <li>
+            {{ r.user.username }} |
+            {{ r.resource.name }} |
+            {{ r.start_datetime }} → {{ r.end_datetime }} |
+            {{ r.status }}
+
+            {% if r.status == "confirmed" %}
+                <a href="{% url 'cancel_reservation' r.id %}">❌ Annuler</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

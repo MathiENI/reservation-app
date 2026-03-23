@@ -1,0 +1,9 @@
+<h1>Admin - Ressources</h1>
+
+<ul>
+    {% for r in resources %}
+        <li>
+            {{ r.name }} ({{ r.get_type_display }})
+        </li>
+    {% endfor %}
+</ul>
