@@ -1,3 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Dashboard 👋 {{ user.username }}</h1>
+
 <h1>Catalogue</h1>
 
 <form method="get">
@@ -56,3 +62,6 @@
         <li>Aucune ressource trouvée</li>
     {% endfor %}
 </ul>
+
+{% endblock %}
+

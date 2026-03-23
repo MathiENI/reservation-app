@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservation App</title>
+</head>
+<body>
+
+    <!-- 🔥 NAVBAR -->
+    <nav>
+        <a href="/">Dashboard</a> |
+        <a href="/resources/">Catalogue</a> |
+        <a href="/reservations/mine/">Mes réservations</a> |
+        <a href="/accounts/logout/">Déconnexion</a>
+    </nav>
+
+    <hr>
+
+    <!-- 💬 MESSAGES -->
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">
+                {{ message }}
+            </p>
+            <hr>
+        {% endfor %}
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

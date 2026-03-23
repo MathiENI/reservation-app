@@ -4,6 +4,7 @@ from catalog.models import Resource
 from .models import Reservation
 from .forms import ReservationForm
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib import messages
 
 @user_passes_test(lambda u: u.is_staff)
 def admin_reservations(request):
@@ -12,7 +13,7 @@ def admin_reservations(request):
     if user_filter:
         reservations = reservations.filter(user__username__icontains=user_filter)
 
-    return render(request, 'reservations/admin_reservations.html', {
+    return render(request, 'reservations/admin_reservations.html',  {
         'reservations': reservations
     })
 
@@ -35,12 +36,11 @@ def create_reservation(request, resource_id):
             reservation = form.save(commit=False)
             reservation.user = request.user
             reservation.resource = resource
-
-            try:
-                reservation.save()
-                return redirect('my_reservations')
-            except Exception as e:
-                form.add_error(None, e)
+            reservation.save()
+            messages.success(request, "Réservation créée avec succès 🎉")
+            return redirect('my_reservations')
+        else:
+            messages.error(request, "Erreur dans le formulaire")
 
     else:
         form = ReservationForm(resource=resource, user=request.user)

@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Dashboard 👋 {{ user.username }}</h1>
 <h1>{{ resource.name }}</h1>
 
 <p>{{ resource.description }}</p>
@@ -7,3 +12,6 @@
     Réserver cette ressource
 </a>
 <a href="/resources/">⬅ Retour</a>
+
+{% endblock %}
+
