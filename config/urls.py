@@ -20,10 +20,21 @@ from django.urls import path, include
 from reservations.views import my_reservations
 
 urlpatterns = [
+    # 🔐 Django admin (OFFICIEL)
     path('admin/', admin.site.urls),
+
+    # 🔑 Auth Django
     path('accounts/', include('django.contrib.auth.urls')),
+
+    # 🧠 Dashboard (homepage)
     path('', include('dashboard.urls')),
-    path('reservations/', include('reservations.urls')),
+
+    # 📦 Catalogue utilisateur
     path('', include('catalog.urls')),
 
+    # 📅 Réservations
+    path('reservations/', include('reservations.urls')),
+
+    # 🧑‍💼 Admin custom (BACK-OFFICE)
+    path('admin-panel/', include('catalog.admin_urls')),
 ]

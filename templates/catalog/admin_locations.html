@@ -1,0 +1,13 @@
+<h1>Locations</h1>
+
+<a href="{% url 'create_location' %}">➕ Ajouter</a>
+
+<ul>
+    {% for c in locations %}
+        <li>
+            {{ c.name }}
+            <a href="{% url 'update_location' c.id %}">✏️</a>
+            <a href="{% url 'delete_location' c.id %}">❌</a>
+        </li>
+    {% endfor %}
+</ul>

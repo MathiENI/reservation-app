@@ -6,7 +6,8 @@ from django.utils import timezone
 from reservations.models import Reservation
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib import messages
-from .forms import ResourceForm
+from .forms import ResourceForm, CategoryForm, LocationForm
+
 
 @user_passes_test(lambda u: u.is_staff)
 def admin_resources(request):
@@ -122,3 +123,97 @@ def delete_resource(request, resource_id):
     messages.success(request, "Ressource désactivée ❌")
 
     return redirect('admin_resources')
+
+@user_passes_test(lambda u: u.is_staff)
+def create_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Catégorie créée 🎉")
+            return redirect('admin_categories')
+    else:
+        form = CategoryForm()
+
+    return render(request, 'catalog/create_category.html', {'form': form})
+
+@user_passes_test(lambda u: u.is_staff)
+def admin_categories(request):
+    categories = Category.objects.all()
+    return render(request, 'catalog/admin_categories.html', {'categories': categories})
+
+@user_passes_test(lambda u: u.is_staff)
+def update_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Catégorie modifiée ✏️")
+            return redirect('admin_categories')
+    else:
+        form = CategoryForm(instance=category)
+
+    return render(request, 'catalog/update_category.html', {'form': form})
+
+@user_passes_test(lambda u: u.is_staff)
+def delete_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    category.delete()
+
+    messages.success(request, "Catégorie supprimée ❌")
+    return redirect('admin_categories')
+
+@user_passes_test(lambda u: u.is_staff)
+def delete_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    category.delete()
+
+    messages.success(request, "Catégorie supprimée ❌")
+    return redirect('admin_categories')
+
+@user_passes_test(lambda u: u.is_staff)
+def create_location(request):
+    if request.method == 'POST':
+        form = LocationForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Lieu créé 🎉")
+            return redirect('admin_locations')
+    else:
+        form = LocationForm()
+
+    return render(request, 'catalog/create_location.html', {'form': form})
+
+@user_passes_test(lambda u: u.is_staff)
+def admin_locations(request):
+    locations = Location.objects.all()
+    return render(request, 'catalog/admin_locations.html', {'locations': locations})
+
+@user_passes_test(lambda u: u.is_staff)
+def update_location(request, location_id):
+    location = get_object_or_404(Location, id=location_id)
+
+    if request.method == 'POST':
+        form = LocationForm(request.POST, instance=location)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Lieu modifié ✏️")
+            return redirect('admin_locations')
+    else:
+        form = LocationForm(instance=location)
+
+    return render(request, 'catalog/update_location.html', {'form': form})
+
+@user_passes_test(lambda u: u.is_staff)
+def delete_location(request, location_id):
+    location = get_object_or_404(Location, id=location_id)
+    location.delete()
+
+    messages.success(request, "Lieu supprimé ❌")
+    return redirect('admin_locations')
