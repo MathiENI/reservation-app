@@ -2,9 +2,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.decorators import user_passes_test
 from django.utils import timezone
 from reservations.models import Reservation
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib import messages
+from .forms import ResourceForm
 
 @user_passes_test(lambda u: u.is_staff)
 def admin_resources(request):
@@ -69,3 +71,54 @@ def resource_detail(request, resource_id):
     return render(request, 'catalog/resource_detail.html', {
         'resource': resource
     })
+
+@user_passes_test(lambda u: u.is_staff)
+def create_resource(request):
+    if request.method == 'POST':
+        form = ResourceForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Ressource créée 🎉")
+            return redirect('admin_resources')
+        else:
+            messages.error(request, "Erreur dans le formulaire")
+
+    else:
+        form = ResourceForm()
+
+    return render(request, 'catalog/create_resource.html', {
+        'form': form
+    })
+
+@user_passes_test(lambda u: u.is_staff)
+def update_resource(request, resource_id):
+    resource = get_object_or_404(Resource, id=resource_id)
+
+    if request.method == 'POST':
+        form = ResourceForm(request.POST, instance=resource)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Ressource modifiée ✏️")
+            return redirect('admin_resources')
+        else:
+            messages.error(request, "Erreur")
+
+    else:
+        form = ResourceForm(instance=resource)
+
+    return render(request, 'catalog/update_resource.html', {
+        'form': form
+    })
+
+@user_passes_test(lambda u: u.is_staff)
+def delete_resource(request, resource_id):
+    resource = get_object_or_404(Resource, id=resource_id)
+
+    resource.is_active = False
+    resource.save()
+
+    messages.success(request, "Ressource désactivée ❌")
+
+    return redirect('admin_resources')

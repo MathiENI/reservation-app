@@ -2,13 +2,17 @@
 
 {% block content %}
 
-<h1>Dashboard 👋 {{ user.username }}</h1>
 <h1>Admin - Ressources</h1>
+
+<a href="{% url 'create_resource' %}">➕ Ajouter une ressource</a>
 
 <ul>
     {% for r in resources %}
         <li>
-            {{ r.name }} ({{ r.get_type_display }})
+            {{ r.name }}
+
+            <a href="{% url 'update_resource' r.id %}">✏️</a>
+            <a href="{% url 'delete_resource' r.id %}">❌</a>
         </li>
     {% endfor %}
 </ul>
