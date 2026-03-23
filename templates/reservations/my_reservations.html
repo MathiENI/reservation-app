@@ -6,8 +6,8 @@
 <ul class="card-section">
     {% for reservation in reservations %}
         <li class="card">
-            <p>{{ reservation.resource.name }} |</p>
-            <p>{{ reservation.start_datetime }} → {{ reservation.end_datetime }} |</p>
+            <p>Ressource :{{ reservation.resource.name }}</p>
+            <p>Période de réservation : Du {{ reservation.start_datetime | date:"DATE_FORMAT" }} au {{ reservation.end_datetime | date:"DATE_FORMAT" }}</p>
             <p>{{ reservation.status }}</p>
 
             {% if reservation.status == "confirmed" %}
@@ -15,6 +15,8 @@
                 <a href="{% url 'cancel_reservation_user' reservation.id %}">❌ Annuler</a>
             {% endif %}
         </li>
+    {% empty %}
+        <li>Aucune réservation à venir <a href="{% url 'resource_list' %}">✏️ Ajouter une réservation</a></li>
     {% endfor %}
 </ul>
 

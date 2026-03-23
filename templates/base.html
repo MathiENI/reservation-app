@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-{% load static %}
+
 <head>
     <title>Reservation App</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/scripts.js' %}"></script>
 </head>
 
 <body>
@@ -11,10 +13,21 @@
     <!-- NAVBAR -->
     <nav>
          👋 Hello {{ user.username }}
-        <a href="/">01. Dashboard</a> |
-        <a href="/resources/">02. Catalogue</a> |
-        <a href="/reservations/mine/">03. Mes réservations</a> |
-        <a href="/admin-panel/resources/">04. Admin</a> |
+        <a href="/" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">01. Dashboard</a> |
+        <a href="{% url 'resource_list' %}" class="{% if request.resolver_match.url_name == 'resource_list' %}active{% endif %}">02. Catalogue</a> |
+        <a href="/reservations/mine/" class="{% if request.resolver_match.url_name == 'my_reservations' %}active{% endif %}">03. Mes réservations</a> |
+        {% if user.is_authenticated and user.is_staff %}
+        <a class="admin-menu">
+            <span>04. Admin</span>
+
+            <div class="dropdown">
+                <a href="{% url 'admin_resources' %}">Ressources</a>
+                <a href="{% url 'admin_categories' %}">Catégories</a>
+                <a href="{% url 'admin_locations' %}">Lieux</a>
+                <a href="{% url 'admin_reservations' %}">Réservations</a>
+            </div>
+        </a> |
+        {% endif %}
         <form method="post" action="{% url 'logout' %}" style="display:inline;">
             {% csrf_token %}
             <button type="submit" class="btn-text">Déconnexion</button>

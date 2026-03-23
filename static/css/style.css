@@ -53,6 +53,7 @@ nav {
     padding-left: 50px;
     padding-top: 100px;
 }
+
 nav a {
     text-decoration: none;
     font-size: 25px;
@@ -61,8 +62,26 @@ nav a {
     margin-top: 50px;
 }
 
+.active {
+    color: #2563eb; /* Blue color */
+    font-weight: bold;
+    border-bottom: 2px solid #2563eb;
+}
+
+nav .admin-menu {
+    cursor:pointer;
+}
+
+.dropdown {
+    display: none;
+}
+
+.dropdown.active {
+    display: block;
+}
+
 nav > form > button {
-      position: relative;
+  position: relative;
   display: inline-block;
   padding: 1.25rem 2rem;
   border: 2px solid var(--pink);
