@@ -27,27 +27,27 @@ from .models import Resource, Category, Location
 def resource_list(request):
     resources = Resource.objects.filter(is_active=True)
 
-    # 🔎 recherche texte
+    # recherche texte
     search = request.GET.get('search')
     if search:
         resources = resources.filter(name__icontains=search)
 
-    # 🎯 filtre type
+    # filtre type
     resource_type = request.GET.get('type')
     if resource_type:
         resources = resources.filter(type=resource_type)
 
-    # 🏷️ filtre catégorie
+    # filtre catégorie
     category = request.GET.get('category')
     if category:
         resources = resources.filter(category_id=category)
 
-    # 📍 filtre lieu
+    # filtre lieu
     location = request.GET.get('location')
     if location:
         resources = resources.filter(location_id=location)
 
-    # 🔥 filtre disponibilité
+    # filtre disponibilité
     available = request.GET.get('available')
     if available:
         now = timezone.now()

@@ -10,23 +10,17 @@ from django.http import HttpResponse
 @user_passes_test(lambda u: u.is_staff)
 def admin_reservations(request):
     reservations = Reservation.objects.all().order_by('-start_datetime')
-
-    # 👤 filtre utilisateur
     user = request.GET.get('user')
     if user:
         reservations = reservations.filter(user__username__icontains=user)
-
-    # 📦 filtre ressource
     resource = request.GET.get('resource')
     if resource:
         reservations = reservations.filter(resource__name__icontains=resource)
 
-    # 📅 filtre date début
     start = request.GET.get('start')
     if start:
         reservations = reservations.filter(start_datetime__gte=start)
 
-    # 📅 filtre date fin
     end = request.GET.get('end')
     if end:
         reservations = reservations.filter(end_datetime__lte=end)
@@ -72,7 +66,7 @@ def create_reservation(request, resource_id):
             reservation = form.save(commit=False)
             reservation.user = request.user
             reservation.resource = resource
-            # 🔥 JOURNALISATION
+            # JOURNALISATION
             reservation.created_by = request.user
             reservation.updated_by = request.user
 
@@ -105,7 +99,7 @@ from django.contrib import messages
 def update_reservation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id)
 
-    # 🔒 sécurité
+    # sécurité
     if reservation.user != request.user:
         messages.error(request, "Accès interdit.")
         return redirect('my_reservations')
@@ -114,7 +108,7 @@ def update_reservation(request, reservation_id):
         form = ReservationForm(request.POST, instance=reservation, resource=reservation.resource)
 
         if form.is_valid():
-            # 🔥 JOURNALISATION
+            # JOURNALISATION
             reservation.updated_by = request.user
 
             form.save()
@@ -146,7 +140,7 @@ def cancel_reservation_user(request, reservation_id):
 def export_reservations_csv(request):
     reservations = Reservation.objects.all()
 
-    # 📅 filtres période
+    # filtres période
     start = request.GET.get('start')
     end = request.GET.get('end')
 
@@ -156,13 +150,13 @@ def export_reservations_csv(request):
     if end:
         reservations = reservations.filter(end_datetime__lte=end)
 
-    # 📄 réponse CSV
+    # réponse CSV
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="reservations.csv"'
 
     writer = csv.writer(response)
 
-    # 🧾 header
+    # header
     writer.writerow([
         'Utilisateur',
         'Ressource',
@@ -172,7 +166,7 @@ def export_reservations_csv(request):
         'Créé le',
     ])
 
-    # 📊 données
+    # données
     for r in reservations:
         writer.writerow([
             r.user.username,
