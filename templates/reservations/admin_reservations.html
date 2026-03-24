@@ -1,57 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Admin - Réservations</h1>
-
-<form method="get">
-
-    Utilisateur :
-    <input type="text" name="user">
-
-    Ressource :
-    <input type="text" name="resource">
-
-    Début :
-    <input type="date" name="start">
-
-    Fin :
-    <input type="date" name="end">
-
-    <button type="submit">Filtrer</button>
-    <a href="{% url 'cancel_reservation_admin' r.id %}">Annuler avec motif</a>
-    <li class="card">
-        {{ r.resource.name }} |
-        créé par {{ r.created_by }} |
-        modifié par {{ r.updated_by }} |
-        le {{ r.updated_at }}
-    </li>
-</form>
-
-<hr>
+<h2>Toutes les réservations</h2>
 
 <ul class="card-section">
+    <form method="get" class="resources-filter">
+        <div class="start-filters">
+            <div class="filter-item">
+                Utilisateur :
+                <input type="text" name="user">
+
+                Ressource :
+                <input type="text" name="resource">
+
+                Début :
+                <input type="date" name="start">
+
+                Fin :
+                <input type="date" name="end">
+            </div>
+        </div>
+        <div class="end-filters">
+            <div class="filter-item">
+                <button type="submit">Filtrer</button>
+            </div>
+        </div>
+    </form>
+
     {% for r in reservations %}
+        <a href="{% url 'cancel_reservation_admin' r.id %}">Annuler avec motif</a>
         <li class="card">
-            {{ r.user.username }} |
             {{ r.resource.name }} |
-            {{ r.start_datetime }} |
-            {{ r.status }}
+            créé par {{ r.created_by }} |
+            modifié par {{ r.updated_by }} |
+            le {{ r.updated_at }}
         </li>
     {% endfor %}
+    <form method="get" action="{% url 'export_reservations_csv' %}">
+
+        📅 Début :
+        <input type="date" name="start">
+
+        📅 Fin :
+        <input type="date" name="end">
+
+        <button type="submit">Télécharger CSV</button>
+    </form>
 </ul>
-
-<h2>Export CSV</h2>
-
-<form method="get" action="{% url 'export_reservations_csv' %}">
-
-    📅 Début :
-    <input type="date" name="start">
-
-    📅 Fin :
-    <input type="date" name="end">
-
-    <button type="submit">Télécharger CSV</button>
-</form>
 
 {% endblock %}
 

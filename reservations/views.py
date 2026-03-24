@@ -52,7 +52,7 @@ def cancel_reservation_admin(request, reservation_id):
         messages.success(request, "Réservation annulée avec motif")
         return redirect('admin_reservations')
 
-    return render(request, 'reservations/cancel_with_reason.html', {
+    return render(request, 'reservations/cancel_reservation_admin.html', {
         'reservation': reservation
     })
 
