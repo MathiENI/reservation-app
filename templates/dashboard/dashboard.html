@@ -9,9 +9,9 @@
 <ul class="card-section">
     {% for r in reservations %}
         <li class="card">
-            <p>Ressource réservée : {{ r.resource.name }}</p>
-            <p>Période de réservation : Du {{ r.start_datetime | date:"DATE_FORMAT" }} au {{ r.end_datetime | date:"DATE_FORMAT" }}</p>
-            <p>{{ r.status }}</p>
+            <p><strong>Ressource réservée :</strong> {{ r.resource.name }}</p>
+            <p><strong>Période de réservation : </strong> Du {{ r.start_datetime | date:"l d F Y à H:i" }} au {{ r.end_datetime | date:"l d F Y à H:i" }}</p>
+            <p class="status-{{ reservation.status }}"><strong>Statut : </strong><span class="uppercase primary-text">{{ r.get_status_display }}</span></p>
         </li>
     {% empty %}
         <li>Aucune réservation à venir <a href="{% url 'resource_list' %}">✏️ Ajouter une réservation</a></li>
@@ -26,11 +26,28 @@
     <ul class="card-section">
         {% for r in alerts %}
             <li class="card">
-                <p>Ressource réservée : {{ r.resource.name }}</p>
-                <p>Période de réservation : Du {{ r.start_datetime | date:"DATE_FORMAT" }} au {{ r.end_datetime | date:"DATE_FORMAT" }}</p>
+                <p><strong>Ressource réservée :</strong> {{ r.resource.name }}</p>
+                <p><strong>Période de réservation : </strong> Du {{ r.start_datetime | date:"l d F Y à H:i" }} au {{ r.end_datetime | date:"l d F Y à H:i" }}</p>
+                <p class="status-{{ reservation.status }}"><strong>Statut : </strong><span class="uppercase primary-text">{{ r.get_status_display }}</span></p>
             </li>
         {% endfor %}
     </ul>
+{% endif %}
+
+<br><br><br>
+
+{% if cancelled %}
+    <h2>Autres</h2>
+    <h3 style="margin-top: 10px;"> ❌ Réservations passées/annulées</h3>
+    {% for c in cancelled %}
+    <ul class="card-section">
+        <li class="card">
+            <p>
+                {{ c.resource.name }} - Du {{ c.start_datetime | date:"l d F Y à H:i" }} au {{ c.end_datetime | date:"l d F Y à H:i" }} - {{ c.get_status_display }}
+            </p>
+        </li>
+     </ul>
+    {% endfor %}
 {% endif %}
 
 {% endblock %}

@@ -34,8 +34,14 @@ def dashboard(request):
 
     alert_count = urgent_reservations.count()
 
+    cancelled_reservations = Reservation.objects.filter(
+        user=request.user,
+        status="cancelled",
+    )
+
     return render(request, 'dashboard/dashboard.html', {
         'reservations': upcoming_reservations,
         "alert_count": alert_count,
-        'alerts': soon
+        'alerts': soon,
+        'cancelled': cancelled_reservations,
     })

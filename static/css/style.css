@@ -51,6 +51,18 @@ body {
     flex-wrap:wrap;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
+.primary-text {
+    color:var(--main-color)!important;
+}
+
+.highlight {
+    color:var(--pink)!important;
+}
+
 /* NAVBAR */
 nav {
     height: 100%;
@@ -172,22 +184,49 @@ h3 {
 
 .card {
     background-color:var(--yellow);
-    color:var(--navy-background);
     border-radius: 5px;
     padding: 25px;
-    margin: 25px 0;
+    margin: 15px 0;
     width:100%;
+
+        p {
+            color:var(--navy-background);
+        }
+}
+
+.start-filters, .end-filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .resources-filter {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+
+    input {
+       height: 35px;
+       border: 2px solid var(--navy-background);
+       border-radius: 8px
+    }
 }
 
 .filter-item {
-    margin:0 20px;
+    font-size:14px;
+
+    select {
+        height: 35px;
+        border: 2px solid var(--navy-background);
+       border-radius: 8px
+    }
+
+    input {
+        margin-left: 10px;
+    }
 }
 
 /* AUTH PAGE */

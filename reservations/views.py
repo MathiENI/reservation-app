@@ -11,6 +11,7 @@ from django.http import HttpResponse
 def admin_reservations(request):
     reservations = Reservation.objects.all().order_by('-start_datetime')
     user = request.GET.get('user')
+
     if user:
         reservations = reservations.filter(user__username__icontains=user)
     resource = request.GET.get('resource')
@@ -48,7 +49,7 @@ def cancel_reservation_admin(request, reservation_id):
         reservation.reason = reason
         reservation.save()
 
-        messages.success(request, "Réservation annulée avec motif 🧾")
+        messages.success(request, "Réservation annulée avec motif")
         return redirect('admin_reservations')
 
     return render(request, 'reservations/cancel_with_reason.html', {

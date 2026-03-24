@@ -6,9 +6,9 @@
 <ul class="card-section">
     {% for reservation in reservations %}
         <li class="card">
-            <p>Ressource :{{ reservation.resource.name }}</p>
-            <p>Période de réservation : Du {{ reservation.start_datetime | date:"DATE_FORMAT" }} au {{ reservation.end_datetime | date:"DATE_FORMAT" }}</p>
-            <p>{{ reservation.status }}</p>
+            <p><strong>Ressource :</strong> {{ reservation.resource.name }}</p>
+            <p><strong>Période de réservation :</strong> Du {{ reservation.start_datetime | date:"l d F Y - H:i" }} au {{ reservation.end_datetime | date:"l d F Y - H:i" }}</p>
+            <p class="status-{{ reservation.status }}"><strong>Statut : </strong><span class="uppercase primary-text">{{ reservation.get_status_display }}</span></p>
 
             {% if reservation.status == "confirmed" %}
                 <a href="{% url 'update_reservation' reservation.id %}">✏️ Modifier</a>
