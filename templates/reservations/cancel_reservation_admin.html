@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+
 <h1>Annuler réservation</h1>
 
 <p>{{ reservation.resource.name }}</p>
@@ -9,3 +13,5 @@
 
     <button type="submit">Confirmer</button>
 </form>
+
+{% endblock %}

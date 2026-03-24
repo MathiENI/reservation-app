@@ -9,10 +9,16 @@
 </head>
 
 <body>
+    <div class="banner">
+        <h1>Réservation de ressources</h1>
+        <h2>{{request.resolver_match.url_name}}</h2>
+    </div>
 
-    <!-- NAVBAR -->
+    <div class="content">
+        <!-- NAVBAR -->
     <nav>
-         👋 Hello {{ user.username }}
+        <p>👋 Hello {{ user.username }}</p>
+        {% if user.is_staff %}<p class="badge">Tu es actuellement : Admin</p>{% endif %}
         <a href="/" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">01. Dashboard</a> |
         <a href="{% url 'resource_list' %}" class="{% if request.resolver_match.url_name == 'resource_list' %}active{% endif %}">02. Catalogue</a> |
         <a href="/reservations/mine/" class="{% if request.resolver_match.url_name == 'my_reservations' %}active{% endif %}">03. Mes réservations</a> |
@@ -21,16 +27,16 @@
             <span>04. Admin</span>
 
             <div class="dropdown">
-                <a href="{% url 'admin_resources' %}">Ressources</a>
-                <a href="{% url 'admin_categories' %}">Catégories</a>
-                <a href="{% url 'admin_locations' %}">Lieux</a>
-                <a href="{% url 'admin_reservations' %}">Réservations</a>
+                <a href="{% url 'admin_resources' %}">Gérer les ressources</a>
+                <a href="{% url 'admin_categories' %}">Gérer les catégories</a>
+                <a href="{% url 'admin_locations' %}">Gérer les lieux</a>
+                <a href="{% url 'admin_reservations' %}">Gérer les réservations</a>
             </div>
         </a> |
         {% endif %}
-        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+        <form method="post" action="{% url 'logout' %}" style="display:inline;margin-top:50px">
             {% csrf_token %}
-            <button type="submit" class="btn-text">Déconnexion</button>
+            <button type="submit" class="btn-text primary-button">Déconnexion</button>
         </form>
     </nav>
 
@@ -54,5 +60,6 @@
         {% block content %}
         {% endblock %}
     </main>
+    </div>
 </body>
 </html>

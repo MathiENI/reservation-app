@@ -2,15 +2,16 @@
 
 {% block content %}
 
-<h1>Dashboard</h1>
+<h2>Dashboard</h2>
 
-<h2>📅 Mes prochaines réservations</h2>
+<h3>📅 Mes prochaines réservations</h3>
 
 <ul class="card-section">
     {% for r in reservations %}
         <li class="card">
             <p>Ressource réservée : {{ r.resource.name }}</p>
             <p>Période de réservation : Du {{ r.start_datetime | date:"DATE_FORMAT" }} au {{ r.end_datetime | date:"DATE_FORMAT" }}</p>
+            <p>{{ r.status }}</p>
         </li>
     {% empty %}
         <li>Aucune réservation à venir <a href="{% url 'resource_list' %}">✏️ Ajouter une réservation</a></li>

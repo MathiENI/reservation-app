@@ -1,7 +1,13 @@
-<h1>Ajouter un lieu</h1>
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Ajouter un lieu</h2>
 
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Ajouter</button>
 </form>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Reservation App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/scripts.js' %}"></script>
+</head>
+
+<body>
+
+    <div class="banner">
+        <h1>Réservation de ressources</h1>
+        <h2>{{request.resolver_match.url_name}}</h2>
+    </div>
+
+    <!-- MESSAGES -->
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">
+                {{ message }}
+            </p>
+            <hr>
+        {% endfor %}
+
+        {% if message.tags == "error" %}
+            <p style="color: red;">{{ message }}</p>
+        {% else %}
+            <p style="color: green;">{{ message }}</p>
+        {% endif %}
+    {% endif %}
+
+    <main class="auth-container">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
