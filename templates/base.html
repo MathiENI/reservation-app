@@ -14,8 +14,10 @@
         <h2>{{request.resolver_match.url_name}}</h2>
     </div>
 
+    <div class="hamburger">🍔</div>
     <div class="content">
         <!-- NAVBAR -->
+
     <nav>
         <p>👋 Hello {{ user.username }}</p>
         {% if user.is_staff %}<p class="badge">Tu es actuellement : Admin</p>{% endif %}

@@ -6,13 +6,13 @@
 
 <a href="{% url 'create_resource' %}">Ajouter une ressource</a>
 
-<ul>
+<ul class="card-section">
     {% for r in resources %}
-        <li>
+        <li class="card">
             {{ r.name }}
 
-            <a href="{% url 'update_resource' r.id %}">✏️</a>
-            <a href="{% url 'delete_resource' r.id %}">❌</a>
+            <a href="{% url 'update_resource' r.id %}"><button class="secondary-button">✏️ Modifier cette ressource</button></a>
+            <a href="{% url 'delete_resource' r.id %}"><button class="secondary-button">❌ Supprimer cette ressource</button></a>
         </li>
     {% endfor %}
 </ul>

@@ -15,25 +15,25 @@
         <h2>{{request.resolver_match.url_name}}</h2>
     </div>
 
-    <!-- MESSAGES -->
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: green;">
-                {{ message }}
-            </p>
-            <hr>
-        {% endfor %}
-
-        {% if message.tags == "error" %}
-            <p style="color: red;">{{ message }}</p>
-        {% else %}
-            <p style="color: green;">{{ message }}</p>
-        {% endif %}
-    {% endif %}
-
     <main class="auth-container">
         {% block content %}
         {% endblock %}
+
+        <!-- MESSAGES -->
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: green;">
+                    {{ message }}
+                </p>
+                <hr>
+            {% endfor %}
+
+            {% if message.tags == "error" %}
+                <p style="color: red;">{{ message }}</p>
+            {% else %}
+                <p style="color: green;">{{ message }}</p>
+            {% endif %}
+        {% endif %}
     </main>
 </body>
 </html>

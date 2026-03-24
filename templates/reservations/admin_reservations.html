@@ -5,36 +5,39 @@
 
 <ul class="card-section">
     <form method="get" class="resources-filter">
-        <div class="start-filters">
+        <div class="start-filters" style="justify-content: flex-start;">
             <div class="filter-item">
-                Utilisateur :
+                <label for="user" id="user">Utilisateur :</label>
                 <input type="text" name="user">
-
-                Ressource :
+            </div>
+            <div class="filter-item">
+                <label for="resource" id="resource">Ressource :</label>
                 <input type="text" name="resource">
-
-                Début :
+            </div>
+        </div>
+        <div class="end-filters" style="justify-content: flex-start;">
+            <div class="filter-item">
+                <label for="start" id="start">Début :</label>
                 <input type="date" name="start">
-
-                Fin :
+            </div>
+            <div class="filter-item">
+                <label for="end" id="end">Fin :</label>
                 <input type="date" name="end">
             </div>
         </div>
-        <div class="end-filters">
-            <div class="filter-item">
-                <button type="submit">Filtrer</button>
-            </div>
+        <div class="filter-item">
+            <button type="submit" class="grey-button">Filtrer</button>
         </div>
     </form>
 
     {% for r in reservations %}
-        <a href="{% url 'cancel_reservation_admin' r.id %}">Annuler avec motif</a>
-        <li class="card">
-            {{ r.resource.name }} |
-            créé par {{ r.created_by }} |
-            modifié par {{ r.updated_by }} |
-            le {{ r.updated_at }}
-        </li>
+    <li class="card">
+        {{ r.resource.name }} |
+        créé par {{ r.created_by }} |
+        modifié par {{ r.updated_by }} |
+        le {{ r.updated_at }}
+        <a href="{% url 'cancel_reservation_admin' r.id %}"><button class="secondary-button">❌ Annuler avec motif</button></a>
+    </li>
     {% endfor %}
     <form method="get" action="{% url 'export_reservations_csv' %}">
 

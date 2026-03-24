@@ -6,13 +6,13 @@
 
 <ul class="card-section">
     <li class="card">
-        <p>{{ resource.description }}</p>
-        <p>Type : {{ resource.get_type_display }}</p>
-        <p>Lieu : {{ resource.location }}</p>
+        <p><strong>Description </strong>: {{ resource.description }}</p>
+        <p><strong>Type</strong> : {{ resource.get_type_display }}</p>
+        <p><strong>Lieu</strong> : {{ resource.location }}</p>
         <a href="{% url 'create_reservation' resource.id %}">
-            Réserver cette ressource
+            <button class="secondary-button">Réserver cette ressource</button>
         </a>
-        <a href="/resources/">Retour</a>
+        <a href="/resources/"><button class="secondary-button">↤ Retour</button></a>
     </li>
 </ul>
 

@@ -8,4 +8,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Toggle aside menu on mobile
+    const hamburger = document.querySelector('.hamburger');
+    const aside = document.querySelector('.aside');
+
+    hamburger.addEventListener('click', () => {
+      aside.classList.toggle('active');
+    });
+
 });

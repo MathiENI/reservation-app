@@ -11,8 +11,8 @@
             <p class="status-{{ reservation.status }}"><strong>Statut : </strong><span class="uppercase primary-text">{{ reservation.get_status_display }}</span></p>
 
             {% if reservation.status == "confirmed" %}
-                <a href="{% url 'update_reservation' reservation.id %}">✏️ Modifier</a>
-                <a href="{% url 'cancel_reservation_user' reservation.id %}">❌ Annuler</a>
+            <a href="{% url 'update_reservation' reservation.id %}"><button class="secondary-button">✏️ Modifier</button></a>
+            <a href="{% url 'cancel_reservation_user' reservation.id %}"><button class="secondary-button">❌ Annuler</button></a>
             {% endif %}
         </li>
     {% empty %}

@@ -6,12 +6,12 @@
 
 <a href="{% url 'create_location' %}">Ajouter</a>
 
-<ul>
+<ul class="card-section">
     {% for c in locations %}
-        <li>
+        <li class="card">
             {{ c.name }}
-            <a href="{% url 'update_location' c.id %}">✏️</a>
-            <a href="{% url 'delete_location' c.id %}">❌</a>
+            <a href="{% url 'update_location' c.id %}"><button class="secondary-button">✏️ Modifier ce lieu</button></a>
+            <a href="{% url 'delete_location' c.id %}"><button class="secondary-button">❌ Supprimer ce lieu</button></a>
         </li>
     {% endfor %}
 </ul>

@@ -6,12 +6,12 @@
 
 <a href="{% url 'create_category' %}">Ajouter</a>
 
-<ul>
+<ul class="card-section">
     {% for c in categories %}
-        <li>
+        <li class="card">
             {{ c.name }}
-            <a href="{% url 'update_category' c.id %}">✏️</a>
-            <a href="{% url 'delete_category' c.id %}">❌</a>
+            <a href="{% url 'update_category' c.id %}"><button class="secondary-button">✏️ Modifier cette catégorie</button></a>
+            <a href="{% url 'delete_category' c.id %}"><button class="secondary-button">❌ Supprimer cette catégorie</button></a>
         </li>
     {% endfor %}
 </ul>

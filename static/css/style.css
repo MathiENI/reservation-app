@@ -36,19 +36,21 @@ body {
     color: var(--main-color);
     line-height: 1.3;
     font-family: var(--main-font);
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .banner {
     display:flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 50px;
 }
 
 .content {
     display: flex;
     flex-wrap:wrap;
+    margin: 60px 0px;
 }
 
 .uppercase {
@@ -101,10 +103,20 @@ nav .admin-menu {
     margin-top:10px;
 }
 
-
 .dropdown.active a {
     font-size:16px;
     margin-top:5px;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
 }
 
 .primary-button {
@@ -131,12 +143,34 @@ nav .admin-menu {
 .secondary-button {
      position: relative;
   display: inline-block;
-  padding: 1.25rem 2rem;
+  padding: 15px;
   border: 2px solid var(--navy-background);
   border-radius: 8px;
   color: var(--navy-background);
   font-family: var(--code-font);
   font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  background: transparent;
+  margin-top: 35px;
+}
+
+.grey-button {
+  position: relative;
+  display: inline-block;
+  padding: 15px;
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  color: var(--main-color);
+  font-family: var(--code-font);
+  font-size: 12px;
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
@@ -174,12 +208,13 @@ h3 {
 }
 
 .card-section {
-    background-color:var(--white);
+    border:var(--pink) solid 2px;
     padding: 15px 50px;
     border-radius: 10px;
     margin: 50px 50px 0 0;
     display:flex;
     flex-wrap:wrap;
+    box-shadow: 0 0 12px var(--pink);
 }
 
 .card {
@@ -207,6 +242,9 @@ h3 {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    border-bottom: 2px var(--pink) solid;
+    padding-bottom: 15px;
+    padding-top: 10px;
 
     input {
        height: 35px;
@@ -238,16 +276,24 @@ h3 {
 }
 
 .auth-container {
-    h2 {
-        margin-bottom: 25px;
-    }
     form {
         background-color: var(--white);
         border-radius: 10px;
         padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 15px var(--main-color);
+        margin-top:50px;
+
+        h2 {
+            margin-bottom: 25px;
+            font-size:25px;
+            color:var(--navy-background);
+        }
 
         input{
-            background-color:var(--yellow);
             border-radius: 10px;
             border-color: var(--navy-background);
             height:35px
@@ -256,7 +302,14 @@ h3 {
         p {
             display:flex;
             flex-direction:column;
-            margin: 10px;
+            margin-top: 10px;
+            width: 100%;
+
+            label {
+                color:var(--navy-background);
+                font-size:14px;
+                margin-bottom:5px;
+            }
         }
     }
 }
