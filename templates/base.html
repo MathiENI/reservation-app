@@ -40,7 +40,8 @@
         </form>
     </nav>
 
-    <!-- MESSAGES -->
+    <main>
+        <!-- MESSAGES -->
     {% if messages %}
         {% for message in messages %}
             <p style="color: green;">
@@ -55,8 +56,6 @@
             <p style="color: green;">{{ message }}</p>
         {% endif %}
     {% endif %}
-
-    <main>
         {% block content %}
         {% endblock %}
     </main>

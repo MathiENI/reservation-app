@@ -4,7 +4,7 @@
 
 <h2>Dashboard</h2>
 
-<h3>📅 Mes prochaines réservations</h3>
+<h3 style="margin-top: 10px;">📅 Mes prochaines réservations</h3>
 
 <ul class="card-section">
     {% for r in reservations %}
@@ -18,12 +18,16 @@
     {% endfor %}
 </ul>
 
+<br><br><br>
+
 {% if alerts %}
-    <h2> Réservations proches</h2>
+    <h2>Réservations proches</h2>
+    <h3 style="margin-top: 10px;"> ⚠️ Il y a {{alert_count}} réservation(s) en approche (< 24h)</h3>
     <ul class="card-section">
         {% for r in alerts %}
             <li class="card">
-                {{ r.resource.name }} à {{ r.start_datetime }}
+                <p>Ressource réservée : {{ r.resource.name }}</p>
+                <p>Période de réservation : Du {{ r.start_datetime | date:"DATE_FORMAT" }} au {{ r.end_datetime | date:"DATE_FORMAT" }}</p>
             </li>
         {% endfor %}
     </ul>

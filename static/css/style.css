@@ -116,6 +116,28 @@ nav .admin-menu {
   background: transparent;
 }
 
+.secondary-button {
+     position: relative;
+  display: inline-block;
+  padding: 1.25rem 2rem;
+  border: 2px solid var(--navy-background);
+  border-radius: 8px;
+  color: var(--navy-background);
+  font-family: var(--code-font);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  background: transparent;
+  margin-top: 35px;
+}
+
 /* MAIN */
 main {
     flex: 1;
@@ -131,7 +153,7 @@ h2 {
     color:var(--pink);
     text-transform:uppercase;
     font-weight:400;
-    font-size:35px;
+    font-size:32px;
 }
 
 h3 {
@@ -141,7 +163,7 @@ h3 {
 
 .card-section {
     background-color:var(--white);
-    padding: 50px;
+    padding: 15px 50px;
     border-radius: 10px;
     margin: 50px 50px 0 0;
     display:flex;
@@ -182,17 +204,11 @@ h3 {
     }
     form {
         background-color: var(--white);
-        width: 45%;
-        height: 30%;
         border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-
+        padding: 50px;
 
         input{
-            background-color:var(--pink);
+            background-color:var(--yellow);
             border-radius: 10px;
             border-color: var(--navy-background);
             height:35px
@@ -201,6 +217,7 @@ h3 {
         p {
             display:flex;
             flex-direction:column;
+            margin: 10px;
         }
     }
 }

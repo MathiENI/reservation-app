@@ -21,10 +21,21 @@ def dashboard(request):
         user=request.user,
         start_datetime__gte=now,
         start_datetime__lte=now + timedelta(hours=24),
-        status="confirmed"
+        status="confirmed",
     )
+
+    urgent = now + timedelta(hours=24)
+
+    urgent_reservations = Reservation.objects.filter(
+        user=request.user,
+        start_datetime__gte=now,
+        start_datetime__lte=urgent
+    )
+
+    alert_count = urgent_reservations.count()
 
     return render(request, 'dashboard/dashboard.html', {
         'reservations': upcoming_reservations,
+        "alert_count": alert_count,
         'alerts': soon
     })
