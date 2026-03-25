@@ -1,0 +1,617 @@
+[
+{
+  "model": "catalog.category",
+  "pk": 3,
+  "fields": {
+    "name": "Matériel",
+    "created_at": "2026-03-25T05:44:47.388Z",
+    "updated_at": "2026-03-25T05:44:47.388Z",
+    "created_by": null,
+    "updated_by": null
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 4,
+  "fields": {
+    "name": "Audio",
+    "created_at": "2026-03-25T05:44:47.396Z",
+    "updated_at": "2026-03-25T05:44:47.396Z",
+    "created_by": null,
+    "updated_by": null
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 5,
+  "fields": {
+    "name": "Vidéo",
+    "created_at": "2026-03-25T05:44:47.400Z",
+    "updated_at": "2026-03-25T05:44:47.400Z",
+    "created_by": null,
+    "updated_by": null
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 6,
+  "fields": {
+    "name": "Salle de réunion",
+    "created_at": "2026-03-25T06:23:08.928Z",
+    "updated_at": "2026-03-25T06:23:29.972Z",
+    "created_by": null,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 7,
+  "fields": {
+    "name": "Salle de classe",
+    "created_at": "2026-03-25T06:23:45.683Z",
+    "updated_at": "2026-03-25T06:23:45.683Z",
+    "created_by": null,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.location",
+  "pk": 2,
+  "fields": {
+    "name": "Campus",
+    "address": "",
+    "created_at": "2026-03-24T15:27:08.940Z",
+    "updated_at": "2026-03-25T07:15:34.729Z",
+    "created_by": null,
+    "updated_by": null
+  }
+},
+{
+  "model": "catalog.location",
+  "pk": 3,
+  "fields": {
+    "name": "Paris",
+    "address": "",
+    "created_at": "2026-03-25T05:44:47.417Z",
+    "updated_at": "2026-03-25T05:44:47.417Z",
+    "created_by": null,
+    "updated_by": null
+  }
+},
+{
+  "model": "catalog.location",
+  "pk": 4,
+  "fields": {
+    "name": "Lyon",
+    "address": "",
+    "created_at": "2026-03-25T05:44:47.434Z",
+    "updated_at": "2026-03-25T05:44:47.434Z",
+    "created_by": null,
+    "updated_by": null
+  }
+},
+{
+  "model": "catalog.location",
+  "pk": 5,
+  "fields": {
+    "name": "Marseille",
+    "address": "",
+    "created_at": "2026-03-25T05:44:47.445Z",
+    "updated_at": "2026-03-25T05:44:47.445Z",
+    "created_by": null,
+    "updated_by": null
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 3,
+  "fields": {
+    "name": "Projecteur",
+    "description": "Description d'un projecteur",
+    "type": "equipment",
+    "category": 3,
+    "location": 4,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.451Z",
+    "updated_at": "2026-03-25T06:21:11.238Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 4,
+  "fields": {
+    "name": "Salle n°15",
+    "description": "Salle pour faire cours à 15 élèves",
+    "type": "room",
+    "category": 7,
+    "location": 3,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.474Z",
+    "updated_at": "2026-03-25T06:25:25.651Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 5,
+  "fields": {
+    "name": "Salle n°46",
+    "description": "Salle de réunion équipée",
+    "type": "room",
+    "category": 6,
+    "location": 2,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.475Z",
+    "updated_at": "2026-03-25T06:25:57.530Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 6,
+  "fields": {
+    "name": "Matériel informatique",
+    "description": "PC/Mac",
+    "type": "equipment",
+    "category": 3,
+    "location": 2,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.476Z",
+    "updated_at": "2026-03-25T06:26:59.204Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 7,
+  "fields": {
+    "name": "Amphithéâtre Pasteur",
+    "description": "Amphi - capacité : 100 places.",
+    "type": "room",
+    "category": 7,
+    "location": 4,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.477Z",
+    "updated_at": "2026-03-25T06:28:18.937Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 8,
+  "fields": {
+    "name": "Télévision",
+    "description": "Smart TV",
+    "type": "equipment",
+    "category": 3,
+    "location": 2,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.479Z",
+    "updated_at": "2026-03-25T06:28:52.532Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 9,
+  "fields": {
+    "name": "Enceinte bluetooth",
+    "description": "Marque JBL",
+    "type": "equipment",
+    "category": 4,
+    "location": 2,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.480Z",
+    "updated_at": "2026-03-25T06:29:58.925Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 10,
+  "fields": {
+    "name": "Amphithéâtre Django",
+    "description": "Amphi équipé",
+    "type": "room",
+    "category": 7,
+    "location": 2,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.481Z",
+    "updated_at": "2026-03-25T06:30:43.852Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 11,
+  "fields": {
+    "name": "Salle n°10",
+    "description": "Salle de réunion équipée",
+    "type": "room",
+    "category": 6,
+    "location": 5,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.482Z",
+    "updated_at": "2026-03-25T06:31:20.628Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "catalog.resource",
+  "pk": 12,
+  "fields": {
+    "name": "Salle n°8",
+    "description": "capacité : 30 élèves",
+    "type": "room",
+    "category": 7,
+    "location": 2,
+    "is_active": true,
+    "created_at": "2026-03-25T05:44:47.483Z",
+    "updated_at": "2026-03-25T06:32:46.847Z",
+    "created_by": 3,
+    "updated_by": 1
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 6,
+  "fields": {
+    "user": 3,
+    "resource": 11,
+    "start_datetime": "2026-03-25T05:44:47.487Z",
+    "end_datetime": "2026-03-25T07:44:47.487Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T05:44:47.487Z",
+    "updated_at": "2026-03-25T05:44:47.487Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 7,
+  "fields": {
+    "user": 3,
+    "resource": 6,
+    "start_datetime": "2026-03-25T05:44:47.498Z",
+    "end_datetime": "2026-03-25T07:44:47.498Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.499Z",
+    "updated_at": "2026-03-25T05:44:47.499Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 8,
+  "fields": {
+    "user": 3,
+    "resource": 5,
+    "start_datetime": "2026-03-25T05:44:47.500Z",
+    "end_datetime": "2026-03-25T07:44:47.500Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.501Z",
+    "updated_at": "2026-03-25T05:44:47.501Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 9,
+  "fields": {
+    "user": 3,
+    "resource": 12,
+    "start_datetime": "2026-03-27T05:44:47.502Z",
+    "end_datetime": "2026-03-27T07:44:47.502Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.502Z",
+    "updated_at": "2026-03-25T05:44:47.502Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 10,
+  "fields": {
+    "user": 3,
+    "resource": 4,
+    "start_datetime": "2026-03-29T05:44:47.504Z",
+    "end_datetime": "2026-03-29T07:44:47.504Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T05:44:47.504Z",
+    "updated_at": "2026-03-25T05:44:47.504Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 11,
+  "fields": {
+    "user": 3,
+    "resource": 4,
+    "start_datetime": "2026-03-29T05:44:47.505Z",
+    "end_datetime": "2026-03-29T07:44:47.505Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T05:44:47.506Z",
+    "updated_at": "2026-03-25T05:44:47.506Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 12,
+  "fields": {
+    "user": 3,
+    "resource": 3,
+    "start_datetime": "2026-03-30T05:44:47.507Z",
+    "end_datetime": "2026-03-30T07:44:47.507Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.507Z",
+    "updated_at": "2026-03-25T05:44:47.507Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 13,
+  "fields": {
+    "user": 3,
+    "resource": 6,
+    "start_datetime": "2026-03-29T05:44:47.509Z",
+    "end_datetime": "2026-03-29T07:44:47.509Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T05:44:47.509Z",
+    "updated_at": "2026-03-25T05:44:47.509Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 14,
+  "fields": {
+    "user": 3,
+    "resource": 11,
+    "start_datetime": "2026-03-30T05:44:47.512Z",
+    "end_datetime": "2026-03-30T07:44:47.512Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T05:44:47.512Z",
+    "updated_at": "2026-03-25T05:44:47.512Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 15,
+  "fields": {
+    "user": 3,
+    "resource": 5,
+    "start_datetime": "2026-03-26T05:44:47.513Z",
+    "end_datetime": "2026-03-26T07:44:47.513Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T05:44:47.513Z",
+    "updated_at": "2026-03-25T05:44:47.513Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 16,
+  "fields": {
+    "user": 3,
+    "resource": 4,
+    "start_datetime": "2026-03-25T05:44:47.515Z",
+    "end_datetime": "2026-03-25T07:44:47.515Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.515Z",
+    "updated_at": "2026-03-25T05:44:47.515Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 17,
+  "fields": {
+    "user": 3,
+    "resource": 11,
+    "start_datetime": "2026-03-28T05:44:47.517Z",
+    "end_datetime": "2026-03-28T07:44:47.517Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.517Z",
+    "updated_at": "2026-03-25T05:44:47.517Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 18,
+  "fields": {
+    "user": 3,
+    "resource": 8,
+    "start_datetime": "2026-03-28T05:44:47.518Z",
+    "end_datetime": "2026-03-28T07:44:47.518Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T05:44:47.519Z",
+    "updated_at": "2026-03-25T05:44:47.519Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 19,
+  "fields": {
+    "user": 3,
+    "resource": 11,
+    "start_datetime": "2026-03-26T05:44:47.520Z",
+    "end_datetime": "2026-03-26T07:44:47.520Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T05:44:47.520Z",
+    "updated_at": "2026-03-25T05:44:47.520Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 20,
+  "fields": {
+    "user": 3,
+    "resource": 4,
+    "start_datetime": "2026-03-28T05:44:47.522Z",
+    "end_datetime": "2026-03-28T07:44:47.522Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.522Z",
+    "updated_at": "2026-03-25T05:44:47.522Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 21,
+  "fields": {
+    "user": 3,
+    "resource": 5,
+    "start_datetime": "2026-03-28T05:44:47.524Z",
+    "end_datetime": "2026-03-28T07:44:47.524Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.524Z",
+    "updated_at": "2026-03-25T05:44:47.524Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 22,
+  "fields": {
+    "user": 3,
+    "resource": 8,
+    "start_datetime": "2026-03-27T05:44:47.527Z",
+    "end_datetime": "2026-03-27T07:44:47.527Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.527Z",
+    "updated_at": "2026-03-25T05:44:47.527Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 23,
+  "fields": {
+    "user": 3,
+    "resource": 5,
+    "start_datetime": "2026-03-26T05:44:47.530Z",
+    "end_datetime": "2026-03-26T07:44:47.530Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.530Z",
+    "updated_at": "2026-03-25T05:44:47.530Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 24,
+  "fields": {
+    "user": 3,
+    "resource": 6,
+    "start_datetime": "2026-03-28T05:44:47.532Z",
+    "end_datetime": "2026-03-28T07:44:47.532Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.532Z",
+    "updated_at": "2026-03-25T05:44:47.532Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 25,
+  "fields": {
+    "user": 3,
+    "resource": 11,
+    "start_datetime": "2026-03-29T05:44:47.534Z",
+    "end_datetime": "2026-03-29T07:44:47.534Z",
+    "status": "cancelled",
+    "created_at": "2026-03-25T05:44:47.534Z",
+    "updated_at": "2026-03-25T05:44:47.534Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 26,
+  "fields": {
+    "user": 1,
+    "resource": 10,
+    "start_datetime": "2026-03-30T07:33:00Z",
+    "end_datetime": "2026-03-31T07:33:00Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T06:33:39.573Z",
+    "updated_at": "2026-03-25T06:33:39.573Z",
+    "created_by": 1,
+    "updated_by": 1,
+    "reason": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 27,
+  "fields": {
+    "user": 1,
+    "resource": 6,
+    "start_datetime": "2026-03-25T13:19:00Z",
+    "end_datetime": "2026-03-25T14:19:00Z",
+    "status": "confirmed",
+    "created_at": "2026-03-25T07:25:38.480Z",
+    "updated_at": "2026-03-25T07:25:38.480Z",
+    "created_by": 1,
+    "updated_by": 1,
+    "reason": null
+  }
+}
+]

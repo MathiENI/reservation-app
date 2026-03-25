@@ -1,5 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    const adminMenu = document.querySelector(".admin-menu");
+
+    if (adminMenu) {
+        adminMenu.addEventListener("click", function() {
+            document.querySelector(".dropdown").classList.toggle("active");
+        });
+    }
+
     const hamburger = document.querySelector(".hamburger");
     const nav = document.querySelector("nav");
 
