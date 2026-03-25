@@ -49,6 +49,7 @@ DB_PORT=1433
 
 ```bash
 python manage.py makemigrations
+python manage.py loaddata demo_data.json
 python manage.py migrate
 ```
 
@@ -69,6 +70,8 @@ Créer un superuser :
 ```bash
 python manage.py createsuperuser
 ```
+
+---
 
 ## 🖥 Schéma BDD
 
