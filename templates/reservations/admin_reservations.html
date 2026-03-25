@@ -4,6 +4,7 @@
 <h2>Toutes les réservations</h2>
 
 <ul class="card-section">
+    {% if resources %}
     <form method="get" class="resources-filter">
         <div class="start-filters" style="justify-content: flex-start;">
             <div class="filter-item">
@@ -29,6 +30,7 @@
             <button type="submit" class="grey-button">Filtrer</button>
         </div>
     </form>
+    {% endif %}
 
     {% for r in reservations %}
     <li class="card">
@@ -38,17 +40,19 @@
         le {{ r.updated_at }}
         <a href="{% url 'cancel_reservation_admin' r.id %}"><button class="secondary-button">❌ Annuler avec motif</button></a>
     </li>
+    {% empty %}
+        <li>Aucune réservation créée</li>
     {% endfor %}
-    <form method="get" action="{% url 'export_reservations_csv' %}">
 
+    {% if resources %}
+    <form method="get" action="{% url 'export_reservations_csv' %}">
         📅 Début :
         <input type="date" name="start">
-
         📅 Fin :
         <input type="date" name="end">
-
         <button type="submit">Télécharger CSV</button>
     </form>
+    {% endif %}
 </ul>
 
 {% endblock %}

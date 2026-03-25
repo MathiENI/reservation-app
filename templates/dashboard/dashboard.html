@@ -18,8 +18,6 @@
     {% endfor %}
 </ul>
 
-<br><br><br>
-
 {% if alerts %}
     <h2>Réservations proches</h2>
     <h3 style="margin-top: 10px;"> ⚠️ Il y a {{alert_count}} réservation(s) en approche (< 24h)</h3>
@@ -34,20 +32,27 @@
     </ul>
 {% endif %}
 
-<br><br><br>
-
 {% if cancelled %}
     <h2>Autres</h2>
     <h3 style="margin-top: 10px;"> ❌ Réservations passées/annulées</h3>
-    {% for c in cancelled %}
     <ul class="card-section">
-        <li class="card">
-            <p>
-                {{ c.resource.name }} - Du {{ c.start_datetime | date:"l d F Y à H:i" }} au {{ c.end_datetime | date:"l d F Y à H:i" }} - {{ c.get_status_display }}
-            </p>
-        </li>
-     </ul>
+    {% for c in cancelled %}
+    <li class="card">
+        <p>
+            {{ c.resource.name }} - Du {{ c.start_datetime | date:"l d F Y à H:i" }} au {{ c.end_datetime | date:"l d F Y à H:i" }} - {{ c.get_status_display }}
+        </p>
+    </li>
     {% endfor %}
+    </ul>
 {% endif %}
+
+<div class="calendar">
+    <div class="calendar-header">
+        <button id="prev">&#8592;</button>
+        <h2 id="month-year"></h2>
+        <button id="next">&#8594;</button>
+    </div>
+    <div class="calendar-days" id="calendar-days"></div>
+</div>
 
 {% endblock %}

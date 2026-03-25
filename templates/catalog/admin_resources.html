@@ -2,18 +2,29 @@
 
 {% block content %}
 
-<h2>Toutes les ressources</h2>
-
-<a href="{% url 'create_resource' %}">Ajouter une ressource</a>
+<div class="section-title">
+    <h2>Toutes les ressources</h2>
+    <a href="{% url 'create_resource' %}"><button class="primary-button">+ Ajouter une ressource</button></a>
+</div>
 
 <ul class="card-section">
     {% for r in resources %}
         <li class="card">
-            {{ r.name }}
+            <p class="uppercase primary-text">{{ r.name }}</p>
+            <p><strong>Description </strong>: {{ r.description }}</p>
+            <p><strong>Type</strong> : {{ r.get_type_display }}</p>
+            <p><strong>Lieu</strong> : {{ r.location }}</p>
 
-            <a href="{% url 'update_resource' r.id %}"><button class="secondary-button">✏️ Modifier cette ressource</button></a>
-            <a href="{% url 'delete_resource' r.id %}"><button class="secondary-button">❌ Supprimer cette ressource</button></a>
+            <p class="primary-text">créé par {{ r.created_by }} le {{ r.created_at }}</p>
+            <p class="primary-text">modifié par {{ r.updated_by }} le {{ r.updated_at }}</p>
+
+            <div class="cta-card-section">
+                <a href="{% url 'update_resource' r.id %}"><button class="secondary-button">✏️ Modifier cette ressource</button></a>
+                <a href="{% url 'delete_resource' r.id %}"><button class="secondary-button">❌ Supprimer cette ressource</button></a>
+            </div>
         </li>
+    {% empty %}
+        <li>Aucune ressource créée <a href="{% url 'create_resource' %}">✏️ Ajouter une ressource</a></li>
     {% endfor %}
 </ul>
 

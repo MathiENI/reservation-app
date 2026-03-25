@@ -5,6 +5,7 @@
 <h2>Catalogue des ressources</h2>
 
 <ul class="card-section">
+    {% if resources %}
     <form method="get" class="resources-filter">
         <div class="start-filters">
             <input class="filter-input" type="text" name="search" placeholder="🔎 Rechercher...">
@@ -47,6 +48,7 @@
                 <button type="submit" class="grey-button">Filtrer</button>
         </div>
     </form>
+    {% endif %}
 
     {% for resource in resources %}
         <li class="card">

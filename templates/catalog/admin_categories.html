@@ -2,17 +2,22 @@
 
 {% block content %}
 
-<h2>Toutes les catégories</h2>
-
-<a href="{% url 'create_category' %}">Ajouter</a>
+<div class="section-title">
+    <h2>Toutes les catégories</h2>
+    <a href="{% url 'create_category' %}"><button class="primary-button">+ Ajouter une catégorie</button></a>
+</div>
 
 <ul class="card-section">
     {% for c in categories %}
         <li class="card">
             {{ c.name }}
-            <a href="{% url 'update_category' c.id %}"><button class="secondary-button">✏️ Modifier cette catégorie</button></a>
-            <a href="{% url 'delete_category' c.id %}"><button class="secondary-button">❌ Supprimer cette catégorie</button></a>
+            <div class="cta-card-section">
+                <a href="{% url 'update_category' c.id %}"><button class="secondary-button">✏️ Modifier cette catégorie</button></a>
+                <a href="{% url 'delete_category' c.id %}"><button class="secondary-button">❌ Supprimer cette catégorie</button></a>
+            </div>
         </li>
+    {% empty %}
+        <li>Aucune catégorie répertoriée <a href="{% url 'create_category' %}">✏️ Ajouter une catégorie</a></li>
     {% endfor %}
 </ul>
 

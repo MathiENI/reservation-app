@@ -4,10 +4,12 @@
 
 <h2>Créer une ressource</h2>
 
+<div class="create-resource-form" style="width:500px">
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Créer</button>
 </form>
+</div>
 
 {% endblock %}

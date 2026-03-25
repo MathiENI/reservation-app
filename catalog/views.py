@@ -233,3 +233,4 @@ def delete_location(request, location_id):
 
     messages.success(request, "Lieu supprimé ❌")
     return redirect('admin_locations')
+

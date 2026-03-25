@@ -2,17 +2,22 @@
 
 {% block content %}
 
-<h2>Tous les lieux</h2>
-
-<a href="{% url 'create_location' %}">Ajouter</a>
+<div class="section-title">
+    <h2>Tous les lieux</h2>
+    <a href="{% url 'create_location' %}"><button class="primary-button">+ Ajouter un lieu</button></a>
+</div>
 
 <ul class="card-section">
     {% for c in locations %}
         <li class="card">
-            {{ c.name }}
-            <a href="{% url 'update_location' c.id %}"><button class="secondary-button">✏️ Modifier ce lieu</button></a>
-            <a href="{% url 'delete_location' c.id %}"><button class="secondary-button">❌ Supprimer ce lieu</button></a>
+            {{ c }}
+            <div class="cta-card-section">
+                <a href="{% url 'update_location' c.id %}"><button class="secondary-button">✏️ Modifier ce lieu</button></a>
+                <a href="{% url 'delete_location' c.id %}"><button class="secondary-button">❌ Supprimer ce lieu</button></a>
+            </div>
         </li>
+    {% empty %}
+        <li>Aucun lieu répertorié <a href="{% url 'create_location' %}">✏️ Ajouter un lieu</a></li>
     {% endfor %}
 </ul>
 
