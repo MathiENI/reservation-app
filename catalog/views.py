@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.utils import timezone
 from reservations.models import Reservation
 from django.contrib.auth.decorators import user_passes_test
@@ -84,7 +84,7 @@ def create_resource(request):
             resource.created_by = request.user
             resource.updated_by = request.user
 
-            form.save()
+            resource.save()
             messages.success(request, "Ressource créée 🎉")
             return redirect('admin_resources')
         else:
@@ -109,7 +109,7 @@ def update_resource(request, resource_id):
 
             resource.updated_by = request.user
 
-            form.save()
+            resource.save()
             messages.success(request, "Ressource modifiée ✏️")
             return redirect('admin_resources')
         else:
@@ -174,14 +174,6 @@ def update_category(request, category_id):
         form = CategoryForm(instance=category)
 
     return render(request, 'catalog/update_category.html', {'form': form})
-
-@user_passes_test(lambda u: u.is_staff)
-def delete_category(request, category_id):
-    category = get_object_or_404(Category, id=category_id)
-    category.delete()
-
-    messages.success(request, "Catégorie supprimée ❌")
-    return redirect('admin_categories')
 
 @user_passes_test(lambda u: u.is_staff)
 def delete_category(request, category_id):
