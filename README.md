@@ -105,3 +105,23 @@ Location
 ├── created_at
 └── updated_at
 ```
+
+---
+
+
+## 💻 Aperçus
+
+Dashboard :
+![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard_2.png)
+
+Catalogue des ressources :
+![Dashboard](screenshots/catalog.png)
+
+Réservations :
+![Dashboard](screenshots/reservations_list.png)
+& admin view :
+![Dashboard](screenshots/admin_reservations.png)
+
+Login :
+![Dashboard](screenshots/login.png)
