@@ -282,6 +282,36 @@ h3 {
     }
 }
 
+.reservations-filter {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+
+.reservations-filter-form {
+    flex:1;
+    border-right: 1px solid var(--pink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 25px;
+
+    .filter-item {
+        margin:5px 0;
+    }
+}
+
+.export-form {
+    flex:1;
+    padding: 25px;
+
+    label {
+        font-size:14px;
+    }
+}
+
 /* AUTH PAGE */
 .auth-container {
     display: flex;
@@ -294,7 +324,8 @@ h3 {
 .create-resource-form,
 .create-location-form,
 .create-category-form,
-.create-reservation-form {
+.create-reservation-form,
+.cancel-admin-form {
     form {
         border: 2px solid var(--pink);
         border-radius: 10px;
@@ -311,9 +342,16 @@ h3 {
             font-size:25px;
         }
 
-        input{
+        input {
             border-radius: 10px;
             height:35px
+        }
+
+        textarea {
+            border: 2px solid var(--main-color);
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 35px;
         }
 
         p {

@@ -4,9 +4,9 @@
 <h2>Toutes les réservations</h2>
 
 <ul class="card-section">
-    {% if resources %}
-    <form method="get" class="resources-filter">
-        <div class="start-filters" style="justify-content: flex-start;">
+    {% if reservations %}
+    <div class="reservations-filter">
+        <form method="get" class="reservations-filter-form">
             <div class="filter-item">
                 <label for="user" id="user">Utilisateur :</label>
                 <input type="text" name="user">
@@ -15,8 +15,6 @@
                 <label for="resource" id="resource">Ressource :</label>
                 <input type="text" name="resource">
             </div>
-        </div>
-        <div class="end-filters" style="justify-content: flex-start;">
             <div class="filter-item">
                 <label for="start" id="start">Début :</label>
                 <input type="date" name="start">
@@ -25,34 +23,39 @@
                 <label for="end" id="end">Fin :</label>
                 <input type="date" name="end">
             </div>
-        </div>
-        <div class="filter-item">
-            <button type="submit" class="grey-button">Filtrer</button>
-        </div>
-    </form>
+            <div class="filter-item">
+                <button type="submit" class="grey-button">Filtrer</button>
+            </div>
+        </form>
+
+        <form method="get" action="{% url 'export_reservations_csv' %}" class="export-form">
+            <h3 style="margin-bottom:15px;">📅 Export CSV</h3>
+
+            <label for="start-export" id="start-export">Période du :</label>
+            <input type="date" name="start-export">
+
+            <label for="end-export" id="end-export">au :</label>
+            <input type="date" name="end-export">
+
+            <button type="submit" class="grey-button">Télécharger CSV</button>
+        </form>
+    </div>
     {% endif %}
 
     {% for r in reservations %}
     <li class="card">
-        {{ r.resource.name }} |
-        créé par {{ r.created_by }} |
-        modifié par {{ r.updated_by }} |
-        le {{ r.updated_at }}
-        <a href="{% url 'cancel_reservation_admin' r.id %}"><button class="secondary-button">❌ Annuler avec motif</button></a>
-    </li>
+            <p class="uppercase ">{{ r.resource.name }}</p>
+
+            <p class="primary-text">créé par {{ r.created_by }} le {{ r.created_at }}</p>
+            <p class="primary-text">modifié par {{ r.updated_by }} le {{ r.updated_at }}</p>
+
+            <div class="cta-card-section">
+                <a href="{% url 'cancel_reservation_admin' r.id %}"><button class="secondary-button">❌ Annuler avec motif</button></a>
+            </div>
+        </li>
     {% empty %}
         <li>Aucune réservation créée</li>
     {% endfor %}
-
-    {% if resources %}
-    <form method="get" action="{% url 'export_reservations_csv' %}">
-        📅 Début :
-        <input type="date" name="start">
-        📅 Fin :
-        <input type="date" name="end">
-        <button type="submit">Télécharger CSV</button>
-    </form>
-    {% endif %}
 </ul>
 
 {% endblock %}

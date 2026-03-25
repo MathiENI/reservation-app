@@ -6,12 +6,14 @@
 
 <p>{{ reservation.resource.name }}</p>
 
-<form method="post">
-    {% csrf_token %}
+<div class="cancel-admin-form" style="width:500px">
+    <form method="post">
+        {% csrf_token %}
 
-    <textarea name="reason" placeholder="Motif..."></textarea>
+        <textarea name="reason" placeholder="Motif..."></textarea>
 
-    <button type="submit">Confirmer</button>
-</form>
+        <button type="submit" class="primary-button" style="margin-top:50px;">Confirmer l'annulation</button>
+    </form>
+</div>
 
 {% endblock %}

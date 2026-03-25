@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // CALENDAR JS
 
-    (function() {
+    /**(function() {
     const monthYear = document.getElementById("month-year");
     const calendarDays = document.getElementById("calendar-days");
     const prevBtn = document.getElementById("prev");
@@ -85,6 +85,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Initial render
     renderCalendar(currentDate);
-})();
+})();*//
 
 });
