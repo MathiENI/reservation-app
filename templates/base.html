@@ -43,21 +43,18 @@
     </nav>
 
     <main>
-        <!-- MESSAGES -->
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: green;">
-                {{ message }}
-            </p>
-            <hr>
-        {% endfor %}
-
-        {% if message.tags == "error" %}
-            <p class="color: red;">{{ message }}</p>
-        {% else %}
-            <p style="color: green;">{{ message }}</p>
+        <div class="feedbacks-section">
+            <!-- MESSAGES -->
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == "error" %}
+                    <p style="color: red;">{{ message }}</p>
+                {% else %}
+                    <p style="color: green;">{{ message }}</p>
+                {% endif %}
+            {% endfor %}
         {% endif %}
-    {% endif %}
+        </div>
         {% block content %}
         {% endblock %}
     </main>

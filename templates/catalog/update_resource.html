@@ -4,10 +4,12 @@
 
 <h2>Modifier une ressource</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enregistrer</button>
-</form>
+<div class="create-resource-form" style="width:500px">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="primary-button" style="margin-top:50px;">Enregistrer</button>
+    </form>
+</div>
 
 {% endblock %}

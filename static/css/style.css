@@ -24,6 +24,13 @@ ul > li {
 
 a {
     text-decoration:none;
+    color: var(--navy-background)
+}
+
+.errorlist {
+    li {
+      color: red;
+    }
 }
 
 /* GLOBAL */
@@ -283,27 +290,29 @@ h3 {
     justify-content: center;
 }
 
-.auth-container, .create-resource-form {
+.auth-container,
+.create-resource-form,
+.create-location-form,
+.create-category-form,
+.create-reservation-form {
     form {
-        background-color: var(--white);
+        border: 2px solid var(--pink);
         border-radius: 10px;
         padding: 50px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 0 15px var(--main-color);
+        box-shadow: 0 0 15px var(--pink);
         margin-top:50px;
 
         h2 {
             margin-bottom: 25px;
             font-size:25px;
-            color:var(--navy-background);
         }
 
         input{
             border-radius: 10px;
-            border-color: var(--navy-background);
             height:35px
         }
 
@@ -314,7 +323,6 @@ h3 {
             width: 100%;
 
             label {
-                color:var(--navy-background);
                 font-size:14px;
                 margin-bottom:5px;
             }

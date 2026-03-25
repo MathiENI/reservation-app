@@ -4,13 +4,16 @@
 
 <h2>Modifier la réservation</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enregistrer</button>
-</form>
+<div class="create-reservation-form" style="width:500px">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="primary-button" style="margin-top:50px;">Enregistrer</button>
+        <button type="submit" class="primary-button" style="margin-top:50px;"><a href="/reservations/mine/">Retour</a></button>
+    </form>
+</div>
 
-<a href="/reservations/mine/">Retour</a>
+
 
 {% endblock %}
 

@@ -4,10 +4,12 @@
 
 <h2>Ajouter un lieu</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Ajouter</button>
-</form>
+<div class="create-location-form" style="width:500px">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="primary-button" style="margin-top:50px;">Ajouter</button>
+    </form>
+</div>
 
 {% endblock %}

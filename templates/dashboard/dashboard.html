@@ -10,7 +10,7 @@
     {% for r in reservations %}
         <li class="card">
             <p><strong>Ressource réservée :</strong> {{ r.resource.name }}</p>
-            <p><strong>Période de réservation : </strong> Du {{ r.start_datetime | date:"l d F Y à H:i" }} au {{ r.end_datetime | date:"l d F Y à H:i" }}</p>
+            <p><strong>Période de réservation : </strong> Du {{ r.start_datetime | date:"d/m/Y à H:i" }} au {{ r.end_datetime | date:"d/m/Y à H:i" }}</p>
             <p class="status-{{ reservation.status }}"><strong>Statut : </strong><span class="uppercase primary-text">{{ r.get_status_display }}</span></p>
         </li>
     {% empty %}
@@ -19,13 +19,13 @@
 </ul>
 
 {% if alerts %}
-    <h2>Réservations proches</h2>
+    <h2>Réservation(s) proche(s)</h2>
     <h3 style="margin-top: 10px;"> ⚠️ Il y a {{alert_count}} réservation(s) en approche (< 24h)</h3>
     <ul class="card-section">
         {% for r in alerts %}
             <li class="card">
                 <p><strong>Ressource réservée :</strong> {{ r.resource.name }}</p>
-                <p><strong>Période de réservation : </strong> Du {{ r.start_datetime | date:"l d F Y à H:i" }} au {{ r.end_datetime | date:"l d F Y à H:i" }}</p>
+                <p><strong>Période de réservation : </strong> Du {{ r.start_datetime | date:"d/m/Y à H:i" }} au {{ r.end_datetime | date:"d/m/Y à H:i" }}</p>
                 <p class="status-{{ reservation.status }}"><strong>Statut : </strong><span class="uppercase primary-text">{{ r.get_status_display }}</span></p>
             </li>
         {% endfor %}

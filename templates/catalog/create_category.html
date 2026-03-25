@@ -4,10 +4,12 @@
 
 <h2>Créer une catégorie</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Créer</button>
-</form>
+<div class="create-category-form" style="width:500px">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="primary-button" style="margin-top:50px;">Créer</button>
+    </form>
+</div>
 
 {% endblock %}
