@@ -123,5 +123,7 @@ Réservations :
 & admin view :
 ![Dashboard](screenshots/admin_reservations.png)
 
-Login :
-![Dashboard](screenshots/login.png)
+
+UI/UX Design inspiré de mon portfolio : 
+mathildefauveau.com
+
