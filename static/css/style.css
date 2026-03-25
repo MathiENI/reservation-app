@@ -126,6 +126,50 @@ nav .admin-menu {
   z-index: 1001;
 }
 
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: -100%; /* caché */
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        background: #0a192f;
+        padding: 20px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    nav.active-nav {
+        left: 0; /* visible */
+
+        p:first-child {
+            margin-top: 70px;
+        }
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+
+    h2 {
+        text-align: center;
+    }
+    .card-section {
+        margin:50px!important;
+    }
+
+}
+
 .primary-button {
      position: relative;
   display: inline-block;
