@@ -460,3 +460,10 @@ h3 {
         background: var(--main-color);
         color: white;
     }
+
+.calendar-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}

@@ -18,8 +18,24 @@
     {% endfor %}
 </ul>
 
+<div class="calendar-section">
+    <div class="calendar">
+        <div class="calendar-header">
+            <button id="prev">&#8592;</button>
+            <h2 id="month-year"></h2>
+            <button id="next">&#8594;</button>
+        </div>
+        <div class="calendar-days" id="calendar-days"></div>
+    </div>
+
+    <div id="reservation-list">
+        {{ reservations_json | json_script:"reservations-data" }}
+
+    </div>
+</div>
+
 {% if alerts %}
-    <h2>Réservation(s) proche(s)</h2>
+    <h2 style="margin-top: 50px;">Réservation(s) proche(s)</h2>
     <h3 style="margin-top: 10px;"> ⚠️ Il y a {{alert_count}} réservation(s) en approche (< 24h)</h3>
     <ul class="card-section">
         {% for r in alerts %}
@@ -45,16 +61,5 @@
     {% endfor %}
     </ul>
 {% endif %}
-
-<!-- POUR V2 CALENDAR
-
-<div class="calendar">
-    <div class="calendar-header">
-        <button id="prev">&#8592;</button>
-        <h2 id="month-year"></h2>
-        <button id="next">&#8594;</button>
-    </div>
-    <div class="calendar-days" id="calendar-days"></div>
-</div>-->
 
 {% endblock %}

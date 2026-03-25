@@ -39,7 +39,19 @@ def dashboard(request):
         status="cancelled",
     )
 
+    reservations = Reservation.objects.filter(user=request.user)
+
+    data = [
+        {
+            "start_datetime": r.start_datetime.isoformat(),
+            "end_datetime": r.end_datetime.isoformat(),
+            "resource_name": r.resource.name,
+        }
+        for r in reservations
+    ]
+
     return render(request, 'dashboard/dashboard.html', {
+        'reservations_json': data,
         'reservations': upcoming_reservations,
         "alert_count": alert_count,
         'alerts': soon,
