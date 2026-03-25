@@ -69,3 +69,36 @@ Créer un superuser :
 ```bash
 python manage.py createsuperuser
 ```
+
+## 🖥 Schéma BDD
+
+```bash
+User
+│
+├── Reservation
+│   ├── start_datetime
+│   ├── end_datetime
+│   ├── status
+│   ├── created_at
+│   ├── updated_at
+│   └── FK → Resource
+│
+Resource
+├── name
+├── type
+├── is_active
+├── FK → Category
+├── FK → Location
+├── created_by
+└── updated_by
+
+Category
+├── name
+├── created_at
+└── updated_at
+
+Location
+├── name
+├── created_at
+└── updated_at
+```
